@@ -4,29 +4,33 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "telefones")
 public class Telefone implements java.io.Serializable{
 	
-  private Long id;
+  private String id;
   private String numero;
   private String ddd;
   private Person person;
   	
-  	@Id
+  	/*@Id
   	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "id_fone" )
-	public Long getId() {
+    @Column( name = "id_fone" )*/
+  	
+  	@Id 
+  	@Column( name = "id_fone" )
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

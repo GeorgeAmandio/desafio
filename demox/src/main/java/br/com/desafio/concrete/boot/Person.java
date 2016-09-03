@@ -1,5 +1,6 @@
 package br.com.desafio.concrete.boot;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,17 +8,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "person")
 public class Person implements java.io.Serializable{
 	
   
-  private Long id;
+  private String id;
   private String nome;
   private String email;
   private String password;
@@ -26,21 +28,28 @@ public class Person implements java.io.Serializable{
   /*private List<Telefone> telefones;*/
   private Set<Telefone> telefones = new HashSet<Telefone>(0);
   
-  	@Id
+/*  	@Id
   	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "id" )
-	public Long getId() {
+    @Column( name = "id" )*/
+  
+  	/* @GeneratedValue(generator="system-uuid")
+  	@GenericGenerator(name="system-uuid", strategy = "uuid")*/
+  	@Id
+  	@Column( name = "id" )
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+  	public void setId(String id) {
 		this.id = id;
 	}
+  	
 	
 	@Column(name="name", length=150)
 	public String getNome() {
 		return nome;
 	}
+
 
 	public void setNome(String nome) {
 		this.nome = nome;
