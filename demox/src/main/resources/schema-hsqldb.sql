@@ -2,7 +2,7 @@ CREATE TABLE person(
 	id PRIMARY KEY IDENTITY , 
 	name 	VARCHAR(150),
 	email 	VARCHAR(150),
-	password	INTEGER,
+	password VARCHAR(150),
 	created date,
 	modified date,
 	last_login date,
