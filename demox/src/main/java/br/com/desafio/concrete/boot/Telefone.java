@@ -2,27 +2,22 @@ package br.com.desafio.concrete.boot;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 @Table(name = "telefones")
-public class Telefone implements java.io.Serializable{
+@JsonInclude(Include.NON_NULL)
+public class Telefone{
 	
   private String id;
   private String numero;
   private String ddd;
-  private Person person;
+  private String person_fk;
   	
-  	/*@Id
-  	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "id_fone" )*/
   	
   	@Id 
   	@Column( name = "id_fone" )
@@ -52,14 +47,13 @@ public class Telefone implements java.io.Serializable{
 		this.ddd = ddd;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "person")
-	public Person getPerson() {
-		return person;
+	@Column(name="person", length=150)
+	public String getPerson_fk() {
+		return person_fk;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
-	} 
-  
+	public void setPerson_fk(String person_fk) {
+		this.person_fk = person_fk;
+	}
+	
 }

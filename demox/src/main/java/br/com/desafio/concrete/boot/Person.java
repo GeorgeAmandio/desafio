@@ -1,39 +1,36 @@
 package br.com.desafio.concrete.boot;
 
-import java.math.BigInteger;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 @Table(name = "person")
-public class Person implements java.io.Serializable{
+@JsonInclude(Include.NON_NULL)
+public class Person{
 	
   
   private String id;
   private String nome;
   private String email;
   private String password;
-  
-  /*@Transient*/
-  /*private List<Telefone> telefones;*/
+  private Date created;
+  private Date modified;
+  private Date last_login;
+  private String token;
   private Set<Telefone> telefones = new HashSet<Telefone>(0);
   
-/*  	@Id
-  	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "id" )*/
-  
-  	/* @GeneratedValue(generator="system-uuid")
-  	@GenericGenerator(name="system-uuid", strategy = "uuid")*/
+
   	@Id
   	@Column( name = "id" )
 	public String getId() {
@@ -73,7 +70,7 @@ public class Person implements java.io.Serializable{
 		this.password = password;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "person_fk")
 	public Set<Telefone> getTelefones() {
 		return telefones;
 	}
@@ -82,15 +79,39 @@ public class Person implements java.io.Serializable{
 		this.telefones = telefones;
 	}
 	
-	
-	/*public List<Telefone> getTelefones() {
-		return telefones;
+	@Column(name="created")
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
 	}
 	
-	@OneToMany
-	public void setTelefones(List<Telefone> telefones) {
-		this.telefones = telefones;
-	}*/
+	@Column(name="modified")
+	public Date getModified() {
+		return modified;
+	}
+
+	public void setModified(Date modified) {
+		this.modified = modified;
+	}
 	
+	@Column(name="last_login")
+	public Date getLast_login() {
+		return last_login;
+	}
+
+	public void setLast_login(Date last_login) {
+		this.last_login = last_login;
+	}
 	
+	@Column(name="token", length=255)
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}	
 }
