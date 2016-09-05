@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class Telefone{
 	
   private String id;
-  private String numero;
+  private String number;
   private String ddd;
   private String person_fk;
   	
@@ -29,13 +29,13 @@ public class Telefone{
 		this.id = id;
 	}
 	
-	@Column(name="number", length=150)
-	public String getNumero() {
-		return numero;
+	@Column(name="number")
+	public String getNumber() {
+		return number;
 	}
 
-	public void setNumero(String numero) {
-		this.numero = numero;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 	
 	@Column(name="ddd", length=150)

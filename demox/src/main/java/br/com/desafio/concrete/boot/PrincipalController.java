@@ -39,7 +39,7 @@ public class PrincipalController {
 	    Telefone telefone = new Telefone();
 	    for(Telefone aux :person.getPhones()){
 	    	telefone.setId(new BigInteger(UUID.randomUUID().toString().replaceAll("-", ""), 16).toString(36));
-	    	telefone.setNumero(aux.getNumero());
+	    	telefone.setNumber(aux.getNumber());
 	    	telefone.setDdd(aux.getDdd());
 	    	telefone.setPerson_fk(person.getId());
 	    	person.getPhones().add(telefone);

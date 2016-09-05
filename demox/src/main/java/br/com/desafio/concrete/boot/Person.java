@@ -20,7 +20,7 @@ public class Person{
 	
   
   private String id;
-  private String nome;
+  private String name;
   private String email;
   private String password;
   private String created;
@@ -42,13 +42,13 @@ public class Person{
   	
 	
 	@Column(name="name", length=150)
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	@Column(name="email", length=150)

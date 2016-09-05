@@ -13,6 +13,6 @@ public class TelefoneService {
     
   public int addTelefone(Telefone telefone){
     String sql = "INSERT INTO phones(id_fone, number, ddd, person) VALUES(?,?,?,?)";
-    return jdbcTemplate.update(sql, telefone.getId(), telefone.getNumero(), telefone.getDdd(), telefone.getPerson_fk());    
+    return jdbcTemplate.update(sql, telefone.getId(), telefone.getNumber(), telefone.getDdd(), telefone.getPerson_fk());    
   }
 }

@@ -19,7 +19,7 @@ public class PersonService {
     
   public int addPerson(Person person){
     String sql = "INSERT INTO person(id, name, email, password, created, modified, last_login, token) VALUES(?,?,?,?,?,?,?,?)";
-    return jdbcTemplate.update(sql, person.getId(), person.getNome(), person.getEmail(), person.getPassword(), person.getCreated(), person.getModified(), person.getLast_login(), person.getToken());    
+    return jdbcTemplate.update(sql, person.getId(), person.getName(), person.getEmail(), person.getPassword(), person.getCreated(), person.getModified(), person.getLast_login(), person.getToken());    
   }
   
   public int updatePerson(String id, String token){
@@ -39,14 +39,14 @@ public class PersonService {
 			  Telefone t = new Telefone();
 			  p.setId(rs.getString("id"));
 			  p.setPassword(rs.getString("password"));
-			  p.setNome(rs.getString("name"));
+			  p.setName(rs.getString("name"));
 			  p.setEmail(rs.getString("email"));
 			  p.setCreated(rs.getString("created"));
 			  p.setModified(rs.getString("modified"));
 			  p.setLast_login(rs.getString("last_login"));
 			  p.setToken(rs.getString("token"));
 			  t.setDdd(rs.getString("ddd"));
-			  t.setNumero(rs.getString("number"));
+			  t.setNumber(rs.getString("number"));
 			  p.getPhones().add(t);
 			  return p;
 		  }
@@ -67,14 +67,14 @@ public class PersonService {
 			  Telefone t = new Telefone();
 			  p.setId(rs.getString("id"));
 			  p.setPassword(rs.getString("password"));
-			  p.setNome(rs.getString("name"));
+			  p.setName(rs.getString("name"));
 			  p.setEmail(rs.getString("email"));
 			  p.setCreated(rs.getString("created"));
 			  p.setModified(rs.getString("modified"));
 			  p.setLast_login(rs.getString("last_login"));
 			  p.setToken(rs.getString("token"));
 			  t.setDdd(rs.getString("ddd"));
-			  t.setNumero(rs.getString("number"));
+			  t.setNumber(rs.getString("number"));
 			  p.getPhones().add(t);
 			  return p;
 		  }
