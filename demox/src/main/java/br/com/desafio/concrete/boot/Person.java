@@ -1,6 +1,5 @@
 package br.com.desafio.concrete.boot;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,11 +23,11 @@ public class Person{
   private String nome;
   private String email;
   private String password;
-  private Date created;
-  private Date modified;
-  private Date last_login;
+  private String created;
+  private String modified;
+  private String last_login;
   private String token;
-  private Set<Telefone> telefones = new HashSet<Telefone>(0);
+  private Set<Telefone> phones = new HashSet<Telefone>(0);
   
 
   	@Id
@@ -71,38 +70,38 @@ public class Person{
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "person_fk")
-	public Set<Telefone> getTelefones() {
-		return telefones;
+	public Set<Telefone> getPhones() {
+		return phones;
 	}
 
-	public void setTelefones(Set<Telefone> telefones) {
-		this.telefones = telefones;
+	public void setPhones(Set<Telefone> phones) {
+		this.phones = phones;
 	}
 	
 	@Column(name="created")
-	public Date getCreated() {
+	public String getCreated() {
 		return created;
 	}
 
-	public void setCreated(Date created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
 	
 	@Column(name="modified")
-	public Date getModified() {
+	public String getModified() {
 		return modified;
 	}
 
-	public void setModified(Date modified) {
+	public void setModified(String modified) {
 		this.modified = modified;
 	}
 	
 	@Column(name="last_login")
-	public Date getLast_login() {
+	public String getLast_login() {
 		return last_login;
 	}
 
-	public void setLast_login(Date last_login) {
+	public void setLast_login(String last_login) {
 		this.last_login = last_login;
 	}
 	

@@ -1,10 +1,14 @@
 package br.com.desafio.concrete.boot;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +30,7 @@ public class UserController {
     	Person person = personService.getPersonCompleteByEmailAndPassword(login.name, login.password);
     	
     	if (person == null) {
-            throw new ServletException("Invalid login");
+    		throw new IllegalArgumentException("Value Invalid!");
         }
     	
     	String token = new LoginResponse(Jwts.builder().setSubject(login.name)
@@ -44,18 +48,23 @@ public class UserController {
          
     }
 
-    @SuppressWarnings("unused")
+   
     private static class UserLogin {
         public String name;
         public String password;
     }
 
-    @SuppressWarnings("unused")
+    
     private static class LoginResponse {
         public String token;
 
         public LoginResponse(final String token) {
             this.token = token;
         }
+    }
+    
+    @ExceptionHandler({IllegalArgumentException.class, NullPointerException.class})
+    void handleBadRequests(HttpServletResponse response) throws IOException {
+    	response.sendError(HttpStatus.BAD_REQUEST.value());
     }
 }

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
-@Table(name = "telefones")
+@Table(name = "phones")
 @JsonInclude(Include.NON_NULL)
 public class Telefone{
 	

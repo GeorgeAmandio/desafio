@@ -12,7 +12,7 @@ public class TelefoneService {
   private JdbcTemplate jdbcTemplate;
     
   public int addTelefone(Telefone telefone){
-    String sql = "INSERT INTO TELEFONES(id_fone, number, ddd, person) VALUES(?,?,?,?)";
+    String sql = "INSERT INTO phones(id_fone, number, ddd, person) VALUES(?,?,?,?)";
     return jdbcTemplate.update(sql, telefone.getId(), telefone.getNumero(), telefone.getDdd(), telefone.getPerson_fk());    
   }
 }

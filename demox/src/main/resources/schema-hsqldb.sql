@@ -3,13 +3,13 @@ CREATE TABLE person(
 	name 	VARCHAR(150),
 	email 	VARCHAR(150),
 	password VARCHAR(150),
-	created date,
-	modified date,
-	last_login date,
+	created VARCHAR(150),
+	modified VARCHAR(150),
+	last_login VARCHAR(150),
 	token varchar(255)
 )
 
-CREATE TABLE TELEFONES( 
+CREATE TABLE phones( 
   id_fone PRIMARY KEY IDENTITY , 
   number 	VARCHAR(9),
 	ddd 	VARCHAR(2),

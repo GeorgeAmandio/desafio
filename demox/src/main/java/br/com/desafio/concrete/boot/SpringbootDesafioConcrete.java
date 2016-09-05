@@ -8,14 +8,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+@SuppressWarnings("deprecation")
 @EnableAutoConfiguration
 @ComponentScan
 @Configuration
 @SpringBootApplication
-public class SpringbootSqlDemo{
+public class SpringbootDesafioConcrete{
 	
-	 @Bean
-	    public FilterRegistrationBean jwtFilter() {
+	@Bean
+	public FilterRegistrationBean jwtFilter() {
+		
 	        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 	        registrationBean.setFilter(new JwtFilter());
 	        registrationBean.addUrlPatterns("/api/*");
@@ -24,7 +26,7 @@ public class SpringbootSqlDemo{
 	    }
 
   public static void main(String[] args) {
-    SpringApplication.run(SpringbootSqlDemo.class, args);
+    SpringApplication.run(SpringbootDesafioConcrete.class, args);
   }
  
 }
